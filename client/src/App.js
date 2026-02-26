@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from './utils/axiosInstance';
 import { Routes, Route } from 'react-router-dom';
 
 // Import all components
@@ -19,8 +19,7 @@ function App() {
   // Fetch all stocks from backend
   const fetchStocks = async () => {
     try {
-      // Adjusted to use relative path if possible, but keeping localhost for consistency
-      const res = await axios.get('http://localhost:5000/api/stocks');
+      const res = await axios.get('/api/stocks');
       setStocks(res.data);
     } catch (err) {
       console.error('Error fetching stocks:', err);

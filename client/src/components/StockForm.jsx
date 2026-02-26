@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 // We will assume a utility function for unique IDs is available for key purposes, but use index for simplicity here.
 import '../styles/StockForm.css';
@@ -34,7 +34,7 @@ const StockForm = ({ onAdd }) => {
 
   const fetchUniqueFields = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/stocks/unique-fields');
+      const res = await axios.get('/api/stocks/unique-fields');
       if (res.data.stockNames) setStockNames(res.data.stockNames);
     } catch (err) {
       console.error('Error fetching unique fields:', err);
@@ -51,7 +51,7 @@ const StockForm = ({ onAdd }) => {
     try {
       // Validate quantity for Sell type (Existing logic)
       if (form.type === 'Sell') {
-        const res = await axios.get('http://localhost:5000/api/stocks');
+        const res = await axios.get('/api/stocks');
         const relevantStocks = res.data.filter(
           s => (s.stockName || s.companyName) === form.stockName
         );
@@ -80,7 +80,7 @@ const StockForm = ({ onAdd }) => {
       };
       delete payload.stockName;
 
-      await axios.post('http://localhost:5000/api/stocks', payload);
+      await axios.post('/api/stocks', payload);
 
       setForm({
         date: '',

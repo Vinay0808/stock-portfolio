@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 import '../styles/StockDetails.css';
 import { useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx';
@@ -51,7 +51,7 @@ const StockDetails = () => {
 
   const fetchAllStocks = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/stocks');
+      const res = await axios.get('/api/stocks');
       setStocks(res.data);
     } catch (err) {
       console.error('Error fetching stock details:', err);
@@ -120,7 +120,7 @@ const StockDetails = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/api/stocks/${_id}`, updatedPayload);
+      await axios.put(`/api/stocks/${_id}`, updatedPayload);
 
       setEditingId(null);
       setEditForm({});
@@ -139,7 +139,7 @@ const StockDetails = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this stock entry?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/stocks/${id}`);
+        await axios.delete(`/api/stocks/${id}`);
         fetchAllStocks();
       } catch (err) {
         console.error('Error deleting stock:', err);
@@ -160,13 +160,13 @@ const StockDetails = () => {
     if (deleteAllChecked) {
       if (window.confirm("Delete ALL stock entries?")) {
         for (let stock of stocks) {
-          await axios.delete(`http://localhost:5000/api/stocks/${stock._id}`);
+          await axios.delete(`/api/stocks/${stock._id}`);
         }
       }
     } else if (selectedIds.length > 0) {
       if (window.confirm("Delete selected stock entries?")) {
         for (let id of selectedIds) {
-          await axios.delete(`http://localhost:5000/api/stocks/${id}`);
+          await axios.delete(`/api/stocks/${id}`);
         }
       }
     }

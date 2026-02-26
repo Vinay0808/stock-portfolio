@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    // when the server installs dependencies (Render, Heroku etc.) we also
+    // build the React app so that the production build is available for
+    // static serving.  The client folder is expected to exist one level up.
+    "postinstall": "cd ../client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

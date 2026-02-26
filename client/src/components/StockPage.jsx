@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 import '../styles/StockPage.css';
 
 const StockPage = () => {
@@ -11,7 +11,7 @@ const StockPage = () => {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/stocks');
+        const res = await axios.get('/api/stocks');
         const filtered = res.data.filter(
           stock => (stock.stockName || stock.companyName) === stockName
         );

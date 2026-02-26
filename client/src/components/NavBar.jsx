@@ -1,6 +1,6 @@
 // src/components/NavBar.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosInstance';
 import '../styles/NavBar.css';
 
 const NavBar = () => {
@@ -50,7 +50,7 @@ useEffect(() => {
 
   const fetchFunds = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/funds');
+      const res = await axios.get('/api/funds');
       setFunds(res.data);
     } catch (error) {
       console.error('Error fetching funds:', error);
@@ -59,7 +59,7 @@ useEffect(() => {
 
   const fetchCapital = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/capital');
+      const res = await axios.get('/api/capital');
       setCapital(res.data?.amount || 0);
     } catch (err) {
       console.error('Error fetching capital:', err);
@@ -79,7 +79,7 @@ useEffect(() => {
     try {
       if (isCapitalMode) {
         // Save capital
-        await axios.post('http://localhost:5000/api/capital', {
+        await axios.post('/api/capital', {
           amount: Number(form.amount),
         });
         fetchCapital();
@@ -90,10 +90,10 @@ useEffect(() => {
         }
 
         if (editId) {
-          await axios.put(`http://localhost:5000/api/funds/${editId}`, form);
+          await axios.put(`/api/funds/${editId}`, form);
           setEditId(null);
         } else {
-          await axios.post('http://localhost:5000/api/funds', form);
+          await axios.post('/api/funds', form);
         }
 
         fetchFunds();
@@ -124,7 +124,7 @@ useEffect(() => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/funds/${id}`);
+      await axios.delete(`/api/funds/${id}`);
       fetchFunds();
     } catch (err) {
       console.error('Error deleting fund:', err);

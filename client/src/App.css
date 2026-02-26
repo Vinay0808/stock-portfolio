@@ -1,0 +1,13 @@
+.main-container {
+  display: flex;
+  padding: 20px;
+}
+
+.form-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.list-section {
+  flex: 2;
+}

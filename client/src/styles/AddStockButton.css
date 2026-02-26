@@ -1,0 +1,69 @@
+/* src/styles/AddStockButton.css */
+
+/* --- Base Button Styles (Desktop/Tablet) --- */
+.add-stock-fixed-btn {
+    /* Positioning */
+    position: fixed;
+    bottom: 30px; /* Increased distance from bottom */
+    right: 30px;  /* Increased distance from right */
+    z-index: 1000; /* Ensure it stays on top */
+
+    /* Aesthetics */
+    background-color: #2196F3; /* Vibrant blue color */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    padding: 15px 25px; /* Generous padding */
+    
+    /* Typography */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Shadow and Hover Effects */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Strong, defined shadow */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition */
+}
+
+/* --- Hover/Active Effects --- */
+.add-stock-fixed-btn:hover {
+    background-color: #0d8cd9; /* Slightly darker blue on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Lifted shadow effect */
+    transform: translateY(-3px) scale(1.02); /* Slight lift and scale */
+}
+
+.add-stock-fixed-btn:active {
+    transform: translateY(1px); /* Pressed down effect */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+    .add-stock-fixed-btn {
+        /* Adjust position for better mobile finger-reach */
+        bottom: 20px;
+        right: 20px;
+        
+        /* Compact size for smaller screens */
+        padding: 12px 20px; 
+        font-size: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow strength */
+        
+        /* Optional: Change shape to a circle if only using an icon */
+        /* If you replace "+ Add Stock" with a "+" icon: */
+        /* width: 56px; 
+           height: 56px;
+           border-radius: 50%;
+           padding: 0;
+           line-height: 56px;
+           text-align: center; */
+    }
+}
+
+/* --- Optional: Accessibility Focus State --- */
+.add-stock-fixed-btn:focus {
+    outline: 2px solid #2196F3;
+    outline-offset: 3px;
+}

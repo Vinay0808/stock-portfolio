@@ -1,0 +1,275 @@
+.stock-page {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* === Header === */
+.stock-header {
+  padding: 1.5rem;
+  border-bottom: 2px solid #ccc;
+  background-color: #f4f6f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stock-header h2,
+.stock-page h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stock-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* === Back Buttons === */
+.back-btn,
+.fixed-back-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn {
+  margin-bottom: 10px;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.fixed-back-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  background-color: #ffc107;
+  color: black;
+  z-index: 1000;
+}
+
+.fixed-back-btn:hover {
+  background-color: #e0a800;
+}
+
+/* === Summary Info === */
+.summary-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.summary-info span {
+  background-color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.total-charges,
+.traded-value-box {
+  font-weight: 500;
+  color: #5c5c5c;
+}
+
+/* === Profit/Loss Badges === */
+.profit,
+.loss {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.profit {
+  background-color: #e6ffed;
+  color: #1a7f37;
+}
+
+.loss {
+  background-color: #ffe6e6;
+  color: #c62828;
+}
+
+.profit-loss {
+  font-weight: 600;
+}
+
+/* === Tooltip === */
+.tooltip-icon {
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+}
+
+.tooltip-icon:hover {
+  color: #000;
+}
+
+/* === Table === */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.stock-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stock-table th,
+.stock-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.stock-table th {
+  background-color: #003366;
+  color: white;
+}
+
+.header-charges {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  text-align: center;
+}
+
+.stock-table tr:nth-child(even) {
+  background-color: #f0f8ff;
+}
+
+.stock-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.stock-table tr:hover {
+  background-color: #e0f7fa;
+  transition: 0.2s ease-in-out;
+}
+
+/* Buy & Sell Backgrounds */
+.stock-table td:nth-child(1),
+.stock-table td:nth-child(2),
+.stock-table td:nth-child(3),
+.stock-table td:nth-child(4),
+.stock-table td:nth-child(5) {
+  background-color: #eaffea;
+}
+
+.stock-table td:nth-child(6),
+.stock-table td:nth-child(7),
+.stock-table td:nth-child(8),
+.stock-table td:nth-child(9),
+.stock-table td:nth-child(10) {
+  background-color: #ffecec;
+}
+
+.stock-table td:nth-child(11) {
+  background-color: #f9f9f9;
+}
+
+/* === Totals Headers === */
+.buy-header {
+  background-color: #b2f0b2;
+  color: #145c14;
+  font-weight: bold;
+}
+
+.sell-header {
+  background-color: #f7bcbc;
+  color: #a11a1a;
+  font-weight: bold;
+}
+
+/* === P/L Cell === */
+.stock-table td.pl-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.pl-bar {
+  position: relative;
+  height: 100%;
+}
+
+.pl-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.pl-profit {
+  background-color: #00c853; /* green */
+}
+
+.pl-loss {
+  background-color: #d50000; /* red */
+}
+
+.pl-text {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .stock-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stock-page h2 {
+    font-size: 1.3rem;
+  }
+
+  .stock-table th,
+  .stock-table td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .fixed-back-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .profit,
+  .loss {
+    font-size: 0.85rem;
+    margin-left: 0;
+    margin-top: 6px;
+  }
+}
